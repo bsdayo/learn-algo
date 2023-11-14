@@ -1,4 +1,7 @@
 #include <iostream>
+#include <sstream>
+
+#include "print.h"
 
 int for_loop(int n)
 {
@@ -20,9 +23,26 @@ int while_loop(int n)
     return result;
 }
 
+std::string nested_for_loop(int n)
+{
+    std::ostringstream result;
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 0; j <= n; j++)
+        {
+            result << '(' << i << ',' << j << ") ";
+        }
+        result << '\n';
+    }
+
+    return result.str();
+}
+
 int main()
 {
-    std::cout << "for_loop: " << for_loop(5) << std::endl;
-    std::cout << "while_loop: " << while_loop(5) << std::endl;
+    PRINT_RESULT(for_loop(5));
+    PRINT_RESULT(while_loop(5));
+    PRINT_RESULT(nested_for_loop(5));
     return 0;
 }
